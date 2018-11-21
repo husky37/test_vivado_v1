@@ -31,10 +31,10 @@ module top(
     output  reg adcrand
     );
     
-    wire adc4clk;
+    wire adc4clk, clk_120;
     reg [1:0] state = 2'b00;
     
-always@(posedge adc4clk)
+always@(posedge clk_120)
 begin
         state <= state + 1;
         case (state)
@@ -66,6 +66,11 @@ begin
     
 end
     
+clk_wiz_0 clock_wizard
+ (
+  .clk_out1(clk_120),
+  .clk_in1(adc4clk)
+ );
     
     
 IBUFDS #(
