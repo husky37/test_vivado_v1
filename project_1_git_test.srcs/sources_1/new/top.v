@@ -31,7 +31,7 @@ module top(
     output  reg adcrand
     );
     
-    wire adc4clk, clk_120;
+    wire adc4clk, clk_120, clk_80;
     reg [1:0] state = 2'b00;
     
 always@(posedge clk_120)
@@ -69,6 +69,7 @@ end
 clk_wiz_0 clock_wizard
  (
   .clk_out1(clk_120),
+  .clk_out2(clk_80),
   .clk_in1(adc4clk)
  );
     
